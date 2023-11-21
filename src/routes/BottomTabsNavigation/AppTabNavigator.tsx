@@ -5,6 +5,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import { TodoHomeScreen } from '@todo';
+import { WeatherHomeScreen } from '@weather';
 
 import { AppTabBar } from './AppTabBar';
 
@@ -29,7 +30,7 @@ export function AppTabNavigator() {
       }}
       tabBar={renderTabBar}>
       <Screen name="HomeScreen" component={TodoHomeScreen} />
-      <Screen name="ScheduleScreen" component={React.Fragment} />
+      <Screen name="ScheduleScreen" component={WeatherHomeScreen} />
       <Screen name="HistoryScreen" component={React.Fragment} />
     </Navigator>
   );
