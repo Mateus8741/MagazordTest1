@@ -51,6 +51,32 @@ export function AppTabBar({
           });
         };
 
+        function variantColor() {
+          switch (tabItem.label) {
+            case 'TodoApp':
+              return 'blue';
+            case 'WeatherApp':
+              return 'orange';
+            case 'StoreApp':
+              return 'green';
+            default:
+              return 'blue';
+          }
+        }
+
+        function variantClassName() {
+          switch (tabItem.label) {
+            case 'TodoApp':
+              return 'text-blue-700';
+            case 'WeatherApp':
+              return 'text-orange-600';
+            case 'StoreApp':
+              return 'text-green-600';
+            default:
+              return 'text-blue-700';
+          }
+        }
+
         return (
           <TouchableOpacity
             key={route.key}
@@ -64,13 +90,13 @@ export function AppTabBar({
             onLongPress={onLongPress}
             style={{ flex: 1 }}>
             <FontAwesome
-              color={isFocused ? 'blue' : '#7C7C7C'}
+              color={isFocused ? variantColor() : '#7C7C7C'}
               name={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
               size={20}
             />
             <Text
               className={`font-semiBold mt-1 text-sm text-center ${
-                isFocused ? 'text-blue-700' : 'text-gray-500'
+                isFocused ? variantClassName() : 'text-gray-500'
               }`}>
               {tabItem.label}
             </Text>
