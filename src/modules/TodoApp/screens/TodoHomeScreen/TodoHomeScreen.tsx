@@ -7,6 +7,7 @@ import { TaskItem } from '@todoComp';
 export function TodoHomeScreen() {
   const { addTask, toggleTask } = useTaskManager();
   const { tasks } = useStorage();
+  const variantType = 'todo';
 
   function renderEmpty() {
     return (
@@ -21,11 +22,13 @@ export function TodoHomeScreen() {
   return (
     <Screen>
       <View className="flex-1 px-5 bg-white dark:bg-gray-900">
-        <Logo name="Todo" />
+        <Logo appName="Todo" type={variantType} />
 
         <TextInput
           onAddTask={tsk => addTask(tsk)}
           placeholder="Adicionar novo todo..."
+          iconName="add"
+          type={variantType}
         />
 
         <View className="m-6" />
