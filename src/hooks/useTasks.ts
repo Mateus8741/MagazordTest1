@@ -9,7 +9,7 @@ export interface Task {
   completed: boolean;
 }
 
-const useTaskManager = () => {
+export function useTaskManager() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   const { addTask: add, toggleTask: toggle } = useStorage();
@@ -38,10 +38,7 @@ const useTaskManager = () => {
   };
 
   return {
-    tasks,
     addTask,
     toggleTask,
   };
-};
-
-export default useTaskManager;
+}

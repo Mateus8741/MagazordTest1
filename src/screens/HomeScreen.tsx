@@ -5,7 +5,7 @@ import { Logo } from '../components/Logo/Logo';
 import { TaskItem } from '../components/TaskItem/TaskItem';
 import { TextInput } from '../components/TextInput/TextInput';
 import { useStorage } from '../hooks/useStorage';
-import useTaskManager from '../hooks/useTasks';
+import { useTaskManager } from '../hooks/useTasks';
 
 export function HomeScreen() {
   const { addTask, toggleTask } = useTaskManager();
