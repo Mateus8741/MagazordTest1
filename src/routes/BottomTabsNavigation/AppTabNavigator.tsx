@@ -10,9 +10,9 @@ import { WeatherHomeScreen } from '@weather';
 import { AppTabBar } from './AppTabBar';
 
 export type AppTabBottomTabParamList = {
-  HomeScreen: undefined;
-  ScheduleScreen: undefined;
-  HistoryScreen: undefined;
+  TodoHomeScreen: undefined;
+  WeatherHomeScreen: undefined;
+  StoreHomeScreen: undefined;
 };
 
 function renderTabBar(props: BottomTabBarProps) {
@@ -29,9 +29,9 @@ export function AppTabNavigator() {
         headerShown: false,
       }}
       tabBar={renderTabBar}>
-      <Screen name="HomeScreen" component={TodoHomeScreen} />
-      <Screen name="ScheduleScreen" component={WeatherHomeScreen} />
-      <Screen name="HistoryScreen" component={React.Fragment} />
+      <Screen name="TodoHomeScreen" component={TodoHomeScreen} />
+      <Screen name="WeatherHomeScreen" component={WeatherHomeScreen} />
+      <Screen name="StoreHomeScreen" component={React.Fragment} />
     </Navigator>
   );
 }

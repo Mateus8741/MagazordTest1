@@ -19,21 +19,21 @@ export const mapScreenToProps: Record<
     };
   }
 > = {
-  HomeScreen: {
+  TodoHomeScreen: {
     label: 'TodoApp',
     icon: {
       focused: 'tasks',
       unfocused: 'tasks',
     },
   },
-  ScheduleScreen: {
+  WeatherHomeScreen: {
     label: 'WeatherApp',
     icon: {
       focused: 'cloud',
       unfocused: 'cloud',
     },
   },
-  HistoryScreen: {
+  StoreHomeScreen: {
     label: 'StoreApp',
     icon: {
       focused: 'shopping-bag',
