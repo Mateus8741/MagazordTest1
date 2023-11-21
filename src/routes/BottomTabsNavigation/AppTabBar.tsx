@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { $shadowProps, useAppSafeArea } from '@shared';
+import { useAppSafeArea, useShadowProps } from '@shared';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 
 import { AppTabBottomTabParamList } from './AppTabNavigator';
@@ -17,8 +17,8 @@ export function AppTabBar({
 
   return (
     <View
-      className="flex-row pt-3 bg-white"
-      style={[{ paddingBottom: bottom }, $shadowProps]}>
+      className="flex-row pt-3 bg-white dark:bg-gray-900"
+      style={[{ paddingBottom: bottom }, useShadowProps()]}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
 
@@ -55,7 +55,7 @@ export function AppTabBar({
           <TouchableOpacity
             key={route.key}
             activeOpacity={1}
-            className="items-center"
+            className="items-center bg-white dark:bg-gray-900"
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
