@@ -1,8 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Task } from '@shared';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-
-import { Task } from '../components/TaskItem/TaskItem';
 
 interface TaskStore {
   tasks: Task[];

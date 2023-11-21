@@ -5,18 +5,16 @@
  * @format
  */
 
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { HomeScreen } from "./src/screens/HomeScreen";
+import React from 'react';
 
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { TodoHomeScreen } from './src/modules/TodoApp/screens/TodoHomeScreen';
 
 export function App(): JSX.Element {
- return(
+  return (
     <SafeAreaProvider>
-      <HomeScreen />
+      <TodoHomeScreen />
     </SafeAreaProvider>
- )
-
+  );
 }
-
-

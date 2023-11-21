@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { useAppSafeArea } from '../../hooks/useAppSafeArea';
+import { useAppSafeArea } from '../../../shared/hooks/useAppSafeArea';
 
 export function Logo() {
   const { top } = useAppSafeArea();
