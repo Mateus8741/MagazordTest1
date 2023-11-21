@@ -4,10 +4,12 @@ import { FlatList, View } from 'react-native';
 import { Logo } from '../components/Logo/Logo';
 import { TaskItem } from '../components/TaskItem/TaskItem';
 import { TextInput } from '../components/TextInput/TextInput';
+import { useStorage } from '../hooks/useStorage';
 import useTaskManager from '../hooks/useTasks';
 
 export function HomeScreen() {
-  const { tasks, addTask, toggleTask } = useTaskManager();
+  const { addTask, toggleTask } = useTaskManager();
+  const { tasks } = useStorage();
 
   return (
     <View className="flex-1 px-5 bg-white dark:bg-gray-900">

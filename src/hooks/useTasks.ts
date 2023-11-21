@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useStorage } from './useStorage';
+
 export interface Task {
   id: number;
   title: string;
@@ -10,6 +12,8 @@ export interface Task {
 const useTaskManager = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
+  const { addTask: add, toggleTask: toggle } = useStorage();
+
   const addTask = (taskText: string) => {
     const newTask: Task = {
       id: tasks.length + 1,
@@ -19,6 +23,8 @@ const useTaskManager = () => {
     };
 
     setTasks([...tasks, newTask]);
+
+    add(newTask);
   };
 
   const toggleTask = (id: number) => {
@@ -27,6 +33,8 @@ const useTaskManager = () => {
     );
 
     setTasks(updatedTasks);
+
+    toggle(id);
   };
 
   return {
