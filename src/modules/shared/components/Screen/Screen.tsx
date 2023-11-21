@@ -19,7 +19,9 @@ export function Screen({ scrollable = false, style, children }: Props) {
         bounces={false}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}>
-        <reactNative.View style={[{ flex: 1 }, style]}>
+        <reactNative.View
+          style={[{ flex: 1 }, style]}
+          className="bg-white dark:bg-gray-900">
           {children}
         </reactNative.View>
       </Container>
