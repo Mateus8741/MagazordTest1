@@ -12,12 +12,12 @@ export interface Task {
 export function useTaskManager() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const { addTask: add, toggleTask: toggle } = useStorage();
+  const { addTask: add, toggleTask: toggle, tasks: tks } = useStorage();
 
   const addTask = (taskText: string) => {
     const newTask: Task = {
-      id: tasks.length + 1,
-      title: `Tarefa ${tasks.length + 1}`,
+      id: tks.length + 1,
+      title: `Tarefa ${tks.length + 1}`,
       description: taskText,
       completed: false,
     };

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
+
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 export type Task = {
   id: number;
@@ -15,7 +17,9 @@ interface TaskProps {
 
 export function TaskItem({ task, onToggle }: TaskProps) {
   return (
-    <View className="bg-white dark:bg-gray-900 mb-4 relative">
+    <Animated.View
+      className="bg-white dark:bg-gray-900 mb-4 relative"
+      entering={FadeIn}>
       <Text className="text-base text-gray-900 dark:text-white mb-1">
         {task.title}
       </Text>
@@ -33,6 +37,6 @@ export function TaskItem({ task, onToggle }: TaskProps) {
       </TouchableOpacity>
 
       {task.completed && <Text className="absolute right-4 bottom-6">✅</Text>}
-    </View>
+    </Animated.View>
   );
 }
