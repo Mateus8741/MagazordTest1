@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 
-import { Screen, useStorage, useTaskManager } from '@shared';
-import { Logo, TaskItem, TextInput } from '@todoComp';
+import { Logo, Screen, TextInput, useStorage, useTaskManager } from '@shared';
+import { TaskItem } from '@todoComp';
 
 export function TodoHomeScreen() {
   const { addTask, toggleTask } = useTaskManager();
@@ -23,7 +23,10 @@ export function TodoHomeScreen() {
       <View className="flex-1 px-5 bg-white dark:bg-gray-900">
         <Logo name="Todo" />
 
-        <TextInput onAddTask={tsk => addTask(tsk)} />
+        <TextInput
+          onAddTask={tsk => addTask(tsk)}
+          placeholder="Adicionar novo todo..."
+        />
 
         <View className="m-6" />
 
