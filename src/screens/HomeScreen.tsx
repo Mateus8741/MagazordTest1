@@ -1,51 +1,47 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, View } from 'react-native';
 
 import { Logo } from '../components/Logo/Logo';
-import { TaskList } from '../components/TaskList/TaskList';
+import { Task, TaskItem } from '../components/TaskItem/TaskItem';
 import { TextInput } from '../components/TextInput/TextInput';
 
 export function HomeScreen() {
-  function handleAddTask(task: string) {
-    console.log(task);
+  const [task, setTasks] = useState<Task[]>([]);
+
+  function handleAddTask(taskText: string) {
+    const newTask = {
+      id: task.length + 1,
+      title: `Tarefa ${task.length + 1}`,
+      description: taskText,
+      completed: false,
+    };
+
+    setTasks([...task, newTask]);
   }
 
-  const data = [
-    {
-      id: 1,
-      title: 'Task 1',
-      task: 'Task 1',
-      completed: true,
-    },
-    {
-      id: 2,
-      title: 'Task 2',
-      task: 'Task 2',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Task 3',
-      task: 'Task 3',
-      completed: false,
-    },
-  ];
+  function handleToggleTask(id: number) {
+    const newTasks = task.map(tsk =>
+      tsk.id === id ? { ...tsk, completed: !tsk.completed } : tsk,
+    );
+
+    setTasks(newTasks);
+  }
 
   return (
     <View className="flex-1 px-5 bg-white dark:bg-gray-900">
       <Logo />
 
-      <TextInput onAddTask={task => handleAddTask(task)} />
+      <TextInput onAddTask={tsk => handleAddTask(tsk)} />
 
       <View className="m-6" />
 
-      {data.map(task => (
-        <TaskList
-          key={task.id}
-          task={task}
-          onToggle={() => console.log('onToggle')}
-        />
-      ))}
+      <FlatList
+        data={task}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({ item }) => (
+          <TaskItem task={item} onToggle={id => handleToggleTask(id)} />
+        )}
+      />
     </View>
   );
 }

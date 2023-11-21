@@ -1,10 +1,38 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
-export function TaskItem() {
+export type Task = {
+  id: number;
+  title: string;
+  description: string;
+  completed: boolean;
+};
+
+interface TaskProps {
+  task: Task;
+  onToggle: (id: number) => void;
+}
+
+export function TaskItem({ task, onToggle }: TaskProps) {
   return (
-    <View>
-      <Text>TaskItem</Text>
+    <View className="bg-white dark:bg-gray-900 mb-4 relative">
+      <Text className="text-base text-gray-900 dark:text-white mb-1">
+        {task.title}
+      </Text>
+
+      <TouchableOpacity
+        className="py-5 px-3 bg-gray-800 dark:bg-white rounded-md"
+        onPress={() => onToggle(task.id)}
+        disabled={task.completed}>
+        <Text
+          className={`text-lg text-white dark:text-gray-900 font-semibold ${
+            task.completed ? 'line-through italic' : ''
+          }`}>
+          {task.description}
+        </Text>
+      </TouchableOpacity>
+
+      {task.completed && <Text className="absolute right-4 bottom-6">✅</Text>}
     </View>
   );
 }
