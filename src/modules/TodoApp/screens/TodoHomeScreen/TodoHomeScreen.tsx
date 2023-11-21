@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 
 import { Screen, useStorage, useTaskManager } from '@shared';
 import { Logo, TaskItem, TextInput } from '@todoComp';
@@ -7,6 +7,16 @@ import { Logo, TaskItem, TextInput } from '@todoComp';
 export function TodoHomeScreen() {
   const { addTask, toggleTask } = useTaskManager();
   const { tasks } = useStorage();
+
+  function renderEmpty() {
+    return (
+      <View className="flex-1 items-center justify-center">
+        <Text className="text-gray-500 dark:text-gray-400 text-xl">
+          Nenhuma tarefa cadastrada
+        </Text>
+      </View>
+    );
+  }
 
   return (
     <Screen>
@@ -24,6 +34,7 @@ export function TodoHomeScreen() {
           renderItem={({ item }) => (
             <TaskItem task={item} onToggle={id => toggleTask(id)} />
           )}
+          ListEmptyComponent={renderEmpty}
         />
       </View>
     </Screen>

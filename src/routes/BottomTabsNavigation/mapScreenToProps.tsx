@@ -22,22 +22,22 @@ export const mapScreenToProps: Record<
   HomeScreen: {
     label: 'TodoApp',
     icon: {
-      focused: 'home',
-      unfocused: 'home',
+      focused: 'tasks',
+      unfocused: 'tasks',
     },
   },
   ScheduleScreen: {
     label: 'WeatherApp',
     icon: {
-      focused: 'calendar',
-      unfocused: 'calendar',
+      focused: 'cloud',
+      unfocused: 'cloud',
     },
   },
   HistoryScreen: {
     label: 'StoreApp',
     icon: {
-      focused: 'history',
-      unfocused: 'history',
+      focused: 'shopping-bag',
+      unfocused: 'shopping-bag',
     },
   },
 };
