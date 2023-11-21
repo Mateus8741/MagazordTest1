@@ -20,6 +20,7 @@ export function TodoHomeScreen() {
         <FlatList
           data={tasks}
           keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <TaskItem task={item} onToggle={id => toggleTask(id)} />
           )}
