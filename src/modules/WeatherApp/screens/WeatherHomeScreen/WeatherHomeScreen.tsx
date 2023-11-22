@@ -1,33 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 
-import { Logo, Screen, TextInput, getWeather } from '@shared';
-import { WeatherView } from '@weatherComp';
+import { Logo, Screen, TextInput, useWeather } from '@shared';
+import { SearchBox } from '@weatherComp';
 
 export function WeatherHomeScreen() {
+  const [city, setCity] = React.useState<string>('');
+
   const variantType = 'weather';
 
-  function handleFindCity(city: string) {
-    console.log(city);
-  }
-
-  const data = {
-    id: 1,
-    city: 'São Paulo',
-    country: 'BR',
-    weather: 'sunny',
-    temperature: 25,
-  };
-
-  function callApi() {
-    getWeather('São Paulo').then(response => {
-      console.log(response);
-    });
-  }
-
-  useEffect(() => {
-    callApi();
-  }, []);
+  const { data } = useWeather(city);
 
   return (
     <Screen>
@@ -35,15 +17,17 @@ export function WeatherHomeScreen() {
 
       <View className="px-5">
         <TextInput
-          onAddTask={text => handleFindCity(text)}
+          onAddTask={text => setCity(text)}
           placeholder="Faça uma busca..."
           iconName="search"
           type={variantType}
         />
+
+        <SearchBox data={data?.data} onPress={item => console.log(item)} />
       </View>
 
       <View className="flex-1 px-5 justify-center items-center">
-        <WeatherView data={data} />
+        {/* <WeatherView data={data} /> */}
       </View>
     </Screen>
   );
