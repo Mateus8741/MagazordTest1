@@ -1,1 +1,1 @@
-export * from './weatherDTO';
+export * from './WeatherDTO';

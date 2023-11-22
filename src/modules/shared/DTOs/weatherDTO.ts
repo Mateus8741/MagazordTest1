@@ -1,6 +1,6 @@
-export type WeatherDTO = Response[];
+export type WeatherDTO = Root2[];
 
-export interface Response {
+export interface Root2 {
   id: number;
   name: string;
   region: string;
