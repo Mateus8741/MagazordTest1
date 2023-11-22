@@ -1,11 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { Logo, Screen } from '@shared';
-import { CardShop } from '@storeComp';
+import { Logo, Screen, UseStoreApi } from '@shared';
 
 export function StoreHomeScreen() {
   const variantType = 'store';
+
+  const { data } = UseStoreApi('/products');
+
+  console.log(data?.data[0]);
 
   return (
     <Screen>
@@ -14,12 +17,7 @@ export function StoreHomeScreen() {
         <Text>StoreHomeScreen</Text>
 
         <View className="flex-wrap flex-row justify-between">
-          <CardShop />
-          <CardShop />
-          <CardShop />
-          <CardShop />
-          <CardShop />
-          <CardShop />
+          {/* <CardShop /> */}
         </View>
       </View>
     </Screen>
