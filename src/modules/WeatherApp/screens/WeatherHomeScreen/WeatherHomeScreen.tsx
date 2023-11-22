@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 
-import { Logo, Screen, TextInput } from '@shared';
+import { Logo, Screen, TextInput, getWeather } from '@shared';
 import { WeatherView } from '@weatherComp';
 
 export function WeatherHomeScreen() {
@@ -18,6 +18,16 @@ export function WeatherHomeScreen() {
     weather: 'sunny',
     temperature: 25,
   };
+
+  function callApi() {
+    getWeather('São Paulo').then(response => {
+      console.log(response);
+    });
+  }
+
+  useEffect(() => {
+    callApi();
+  }, []);
 
   return (
     <Screen>

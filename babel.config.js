@@ -8,7 +8,7 @@ module.exports = {
       {
         root: '.',
         alias: {
-          '@dtos': './src/dtos',
+          '@dtos': './src/modules/shared/DTOs',
           '@components': './src/components',
           '@todo': './src/modules/TodoApp',
           '@todoComp': './src/modules/TodoApp/components',
@@ -23,7 +23,7 @@ module.exports = {
           '@utils': './src/utils',
           '@services': './src/modules/shared/services',
           '@routes': './src/routes',
-          '@api': './src/api',
+          '@api': './src/modules/shared/api',
           '@types': './src/types',
           '@infra': './src/infra',
           '@mock': './src/mock',
