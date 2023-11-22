@@ -1,16 +1,19 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
+import { StoreDTO } from '@dtos';
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DetailsScreen } from '@store';
 
 import {
-    AppTabBottomTabParamList,
-    AppTabNavigator,
+  AppTabBottomTabParamList,
+  AppTabNavigator,
 } from './BottomTabsNavigation/AppTabNavigator';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
+  DetailsScreen: {data: StoreDTO};
 };
 
 export function AppStack() {
@@ -24,6 +27,7 @@ export function AppStack() {
         fullScreenGestureEnabled: true,
       }}>
       <Screen name="AppTabNavigator" component={AppTabNavigator} />
+      <Screen name="DetailsScreen" component={DetailsScreen} />
     </Navigator>
   );
 }
