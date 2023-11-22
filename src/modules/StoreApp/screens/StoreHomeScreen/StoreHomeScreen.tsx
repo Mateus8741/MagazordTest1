@@ -5,13 +5,21 @@ import { StoreDTO } from '@dtos';
 import { Logo, Screen, UseStoreApi } from '@shared';
 import { CardShop } from '@storeComp';
 
-export function StoreHomeScreen() {
+import { AppScreenProps } from '@routes';
+
+export function StoreHomeScreen({
+  navigation,
+}: AppScreenProps<'AppTabNavigator'>) {
   const variantType = 'store';
 
   const { data } = UseStoreApi('/products');
 
+  function goToDetails(product: StoreDTO) {
+    navigation.navigate('DetailsScreen', { data: product });
+  }
+
   function renderItem(item: StoreDTO) {
-    return <CardShop data={item} />;
+    return <CardShop data={item} onPress={() => goToDetails(item)} />;
   }
 
   function renderEmpty() {

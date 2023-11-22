@@ -1,18 +1,26 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
+} from 'react-native';
 
 import { StoreDTO } from '@dtos';
 import { formatMoney } from '@shared';
 
-interface CardShopProps {
+interface CardShopProps extends TouchableOpacityProps {
   data: StoreDTO;
 }
 
-export function CardShop({ data }: CardShopProps) {
+export function CardShop({ data, ...rest }: CardShopProps) {
   const formatedPrice = formatMoney(data.price);
 
   return (
-    <View className="h-[170px] w-[170px] bg-gray-900 dark:bg-white rounded-lg overflow-hidden mb-6">
+    <TouchableOpacity
+      className="h-[170px] w-[170px] bg-gray-900 dark:bg-white rounded-lg overflow-hidden mb-6"
+      {...rest}>
       <Image
         source={{ uri: data.image }}
         className="flex-1"
@@ -28,6 +36,6 @@ export function CardShop({ data }: CardShopProps) {
           {formatedPrice}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
