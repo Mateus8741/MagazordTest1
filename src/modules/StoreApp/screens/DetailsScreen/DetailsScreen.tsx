@@ -1,18 +1,43 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Share, Text, View } from 'react-native';
 
 import { Screen, customTransition, formatMoney, useAppSafeArea } from '@shared';
-import { Header } from '@storeComp';
+import { CustomButton, Header } from '@storeComp';
 import Animated, { SlideInDown } from 'react-native-reanimated';
 
 import { AppScreenProps } from '@routes';
 
-export function DetailsScreen({ route }: AppScreenProps<'DetailsScreen'>) {
+export function DetailsScreen({
+  route,
+  navigation,
+}: AppScreenProps<'DetailsScreen'>) {
   const { data } = route.params;
 
   const { top } = useAppSafeArea();
 
   const formatedMoney = formatMoney(data.price);
+
+  function handleBuy() {
+    Alert.alert('Comprar', 'Deseja confirmar a compra desse produto?', [
+      {
+        text: 'Confirmar',
+        onPress: () => navigation.goBack(),
+      },
+      {
+        text: 'Cancel',
+        style: 'destructive',
+        onPress: () => console.log('Cancel Pressed'),
+      },
+    ]);
+  }
+
+  function handleShare() {
+    Share.share({
+      title: data.title,
+      message: data.description,
+      url: data.image,
+    });
+  }
 
   return (
     <>
@@ -53,11 +78,10 @@ export function DetailsScreen({ route }: AppScreenProps<'DetailsScreen'>) {
               {formatedMoney} + impostos
             </Text>
 
-            <TouchableOpacity className="bg-green-500 dark:bg-green-600 rounded-lg px-5 py-3 mt-5 items-center">
-              <Text className="text-lg font-bold text-white dark:text-gray-900">
-                Comprar
-              </Text>
-            </TouchableOpacity>
+            <View className="flex-row justify-around">
+              <CustomButton title="Comprar" onPress={handleBuy} />
+              <CustomButton title="Compartilhar" onPress={handleShare} />
+            </View>
           </Animated.View>
         </View>
       </Screen>
