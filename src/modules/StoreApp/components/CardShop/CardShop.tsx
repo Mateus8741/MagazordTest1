@@ -2,12 +2,15 @@ import React from 'react';
 import { Image, Text, View } from 'react-native';
 
 import { StoreDTO } from '@dtos';
+import { formatMoney } from '@shared';
 
 interface CardShopProps {
   data: StoreDTO;
 }
 
 export function CardShop({ data }: CardShopProps) {
+  const formatedPrice = formatMoney(data.price);
+
   return (
     <View className="h-[170px] w-[170px] bg-gray-900 dark:bg-white rounded-lg overflow-hidden mb-6">
       <Image
@@ -22,7 +25,7 @@ export function CardShop({ data }: CardShopProps) {
           {data.title}
         </Text>
         <Text className="text-base font-normal text-zinc-300 dark:text-zinc-700">
-          {data.price}
+          {formatedPrice}
         </Text>
       </View>
     </View>
