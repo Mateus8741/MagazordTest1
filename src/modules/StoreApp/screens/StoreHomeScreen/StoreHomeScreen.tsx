@@ -9,7 +9,7 @@ export function StoreHomeScreen() {
   return (
     <Screen>
       <View className="flex-1 px-5">
-        <Logo appName="Todo" type={variantType} />
+        <Logo appName="Store" type={variantType} />
         <Text>StoreHomeScreen</Text>
       </View>
     </Screen>
