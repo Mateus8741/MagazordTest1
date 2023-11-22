@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { Root2 } from '@dtos';
 import {
@@ -9,7 +9,7 @@ import {
   useLocationSearch,
   useWeatherData,
 } from '@shared';
-import { SearchBox, WeatherView } from '@weatherComp';
+import { Loading, SearchBox, WeatherView } from '@weatherComp';
 
 export function WeatherHomeScreen() {
   const [city, setCity] = React.useState<string>('');
@@ -20,12 +20,12 @@ export function WeatherHomeScreen() {
 
   const { data } = useLocationSearch(city);
 
-  const { data: weather } = useWeatherData(
+  const { data: weather, isFetching } = useWeatherData(
     selectedCity.name,
     selectedCity.region,
   );
 
-  console.log('clima', weather?.data);
+  console.log('data', weather?.data);
 
   return (
     <Screen>
@@ -53,7 +53,15 @@ export function WeatherHomeScreen() {
       </View>
 
       <View className="flex-1 px-5 justify-center items-center">
-        <WeatherView data={weather?.data} />
+        {weather?.data === undefined ? (
+          <View className="flex-1 justify-center items-center">
+            <Text className="text-2xl text-gray-500">Faça uma busca...</Text>
+          </View>
+        ) : isFetching ? (
+          <Loading />
+        ) : (
+          <WeatherView data={weather?.data} />
+        )}
       </View>
     </Screen>
   );
