@@ -1,24 +1,34 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
+import { StoreDTO } from '@dtos';
 import { Logo, Screen, UseStoreApi } from '@shared';
+import { CardShop } from '@storeComp';
 
 export function StoreHomeScreen() {
   const variantType = 'store';
 
   const { data } = UseStoreApi('/products');
 
-  console.log(data?.data[0]);
+  function renderItem(item: StoreDTO) {
+    return <CardShop data={item} />;
+  }
 
   return (
     <Screen>
       <View className="flex-1 px-5">
         <Logo appName="Store" type={variantType} />
-        <Text>StoreHomeScreen</Text>
 
-        <View className="flex-wrap flex-row justify-between">
-          {/* <CardShop /> */}
-        </View>
+        <FlatList
+          data={data?.data}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({ item }) => renderItem(item)}
+          numColumns={2}
+          columnWrapperStyle={{
+            justifyContent: 'space-between',
+          }}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </Screen>
   );

@@ -16,7 +16,9 @@ export function CardShop({ data }: CardShopProps) {
         resizeMode="cover"
       />
       <View className="px-3 py-1 justify-center bg-transparent">
-        <Text className="text-xl font-bold text-white dark:text-gray-900">
+        <Text
+          className="text-lg font-bold text-white dark:text-gray-900 text-ellipsis"
+          numberOfLines={1}>
           {data.title}
         </Text>
         <Text className="text-base font-normal text-zinc-300 dark:text-zinc-700">
