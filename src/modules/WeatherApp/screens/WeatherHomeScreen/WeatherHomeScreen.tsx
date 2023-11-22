@@ -25,8 +25,6 @@ export function WeatherHomeScreen() {
     selectedCity.region,
   );
 
-  console.log('data', weather?.data);
-
   return (
     <Screen scrollable>
       <Logo appName="Weather" type={variantType} />
