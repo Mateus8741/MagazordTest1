@@ -38,15 +38,18 @@ const $logo = tv({
 interface LogoProps extends VariantProps<typeof $logo> {
   appName: string;
   type?: 'todo' | 'weather' | 'store';
+  padding?: boolean;
 }
 
-export function Logo({ appName, type = 'todo' }: LogoProps) {
+export function Logo({ appName, type = 'todo', padding = true }: LogoProps) {
   const { top } = useAppSafeArea();
 
   const { app, name } = $logo({ type });
 
   return (
-    <View className="flex-row pb-4 justify-center" style={{ marginTop: top }}>
+    <View
+      className={`flex-row ${padding === true && 'pb-4'} justify-center`}
+      style={{ paddingTop: padding === true ? top : 0 }}>
       <Text className={app()}>{appName}</Text>
       <Text className={name()}>App</Text>
     </View>
