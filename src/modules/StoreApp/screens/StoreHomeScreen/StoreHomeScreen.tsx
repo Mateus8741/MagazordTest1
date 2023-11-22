@@ -5,11 +5,11 @@ import { StoreDTO } from '@dtos';
 import { Logo, Screen, UseStoreApi } from '@shared';
 import { CardShop } from '@storeComp';
 
-import { AppScreenProps } from '@routes';
+import { AppTabScreenProps } from '@routes';
 
 export function StoreHomeScreen({
   navigation,
-}: AppScreenProps<'AppTabNavigator'>) {
+}: AppTabScreenProps<'StoreHomeScreen'>) {
   const variantType = 'store';
 
   const { data } = UseStoreApi('/products');

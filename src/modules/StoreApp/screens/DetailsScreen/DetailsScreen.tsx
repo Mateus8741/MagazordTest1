@@ -78,7 +78,7 @@ export function DetailsScreen({
               {formatedMoney} + impostos
             </Text>
 
-            <View className="flex-row justify-around">
+            <View className="flex-row flex-1 justify-around items-center">
               <CustomButton title="Comprar" onPress={handleBuy} />
               <CustomButton title="Compartilhar" onPress={handleShare} />
             </View>
