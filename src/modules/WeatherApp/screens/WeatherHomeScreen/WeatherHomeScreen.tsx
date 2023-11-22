@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { Logo, Screen, TextInput } from '@shared';
+import { WeatherView } from '@weatherComp';
 
 export function WeatherHomeScreen() {
   const variantType = 'weather';
@@ -10,18 +11,29 @@ export function WeatherHomeScreen() {
     console.log(city);
   }
 
+  const data = {
+    id: 1,
+    city: 'São Paulo',
+    country: 'BR',
+    weather: 'sunny',
+    temperature: 25,
+  };
+
   return (
     <Screen>
-      <View className="flex-1 px-5 bg-white dark:bg-gray-900">
-        <Logo appName="Weather" type={variantType} />
+      <Logo appName="Weather" type={variantType} />
 
+      <View className="px-5">
         <TextInput
           onAddTask={text => handleFindCity(text)}
           placeholder="Faça uma busca..."
           iconName="search"
           type={variantType}
         />
-        <Text>WeatherHomeScreen</Text>
+      </View>
+
+      <View className="flex-1 px-5 justify-center items-center">
+        <WeatherView data={data} />
       </View>
     </Screen>
   );

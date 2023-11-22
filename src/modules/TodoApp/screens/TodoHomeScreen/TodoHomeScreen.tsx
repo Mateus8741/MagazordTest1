@@ -21,7 +21,7 @@ export function TodoHomeScreen() {
 
   return (
     <Screen>
-      <View className="flex-1 px-5 bg-white dark:bg-gray-900">
+      <View className="flex-1 px-5">
         <Logo appName="Todo" type={variantType} />
 
         <TextInput
