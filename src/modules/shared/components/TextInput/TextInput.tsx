@@ -57,9 +57,20 @@ export function TextInput({
 
   const { input, button } = $input({ type });
 
-  const focusedStyles = isFocused
-    ? 'border-blue-700'
-    : 'border-gray-300 dark:border-gray-700';
+  function FocusColor() {
+    if (isFocused) {
+      switch (type) {
+        case 'todo':
+          return 'border-blue-700';
+        case 'weather':
+          return 'border-orange-600';
+        case 'store':
+          return 'border-green-600';
+      }
+    } else {
+      return 'border-gray-300 dark:border-gray-700';
+    }
+  }
 
   function handleNewTask() {
     onAddTask(taskText);
@@ -70,7 +81,7 @@ export function TextInput({
     <View className="flex-row items-center">
       <View className="flex-1">
         <RNInput
-          className={`${input()} ${focusedStyles}`}
+          className={`${input()} ${FocusColor()}`}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           onChangeText={setTaskText}

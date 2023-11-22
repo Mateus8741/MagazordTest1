@@ -22,6 +22,7 @@ export function SearchBox({ data, onPress, show = false }: SearchBoxProps) {
         <FlatList
           data={data}
           keyExtractor={item => item.id.toString()}
+          scrollEnabled={false}
           renderItem={({ item }) => (
             <TouchableOpacity
               className="flex-row items-center py-2"

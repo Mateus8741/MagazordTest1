@@ -28,7 +28,7 @@ export function WeatherHomeScreen() {
   console.log('data', weather?.data);
 
   return (
-    <Screen>
+    <Screen scrollable>
       <Logo appName="Weather" type={variantType} />
 
       <View className="px-5">
