@@ -42,9 +42,9 @@ Tecle (a) para ANDROID
 
 ## 🖼️ Pictures
 
-<img src="https://github.com/Mateus8741/interfocus/assets/62652109/b619718f-1a1f-4e27-813a-f3d246f8670e" alt="Imagem de exemplo" width="300" height="600">
-<img src="https://github.com/Mateus8741/interfocus/assets/62652109/7763b75d-417e-4e32-9038-206a8d37e579" alt="Imagem de exemplo" width="300" height="600">
-<img src="https://github.com/Mateus8741/interfocus/assets/62652109/f2b768be-602b-4919-b6c5-336fd5307818" alt="Imagem de exemplo" width="300" height="600">
+![Simulator Screenshot - iPhone 15 - 2023-11-22 at 20 50 39](https://github.com/Mateus8741/MagazordTest1/assets/62652109/3d523a88-0db3-4716-8c70-eb51bdead16a)
+![Simulator Screenshot - iPhone 15 - 2023-11-22 at 20 58 29](https://github.com/Mateus8741/MagazordTest1/assets/62652109/dc55f749-893e-4597-b390-d2a7568a672b)
+![Simulator Screenshot - iPhone 15 - 2023-11-22 at 20 58 46](https://github.com/Mateus8741/MagazordTest1/assets/62652109/e05fc971-cfac-48c7-9591-6630e6b0eeef)
 
 ## 💻 Author
 
