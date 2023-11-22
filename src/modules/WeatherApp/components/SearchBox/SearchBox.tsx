@@ -8,11 +8,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 interface SearchBoxProps {
   data: WeatherDTO;
   onPress: (item: Root2) => void;
+  show: boolean;
 }
 
-export function SearchBox({ data, onPress }: SearchBoxProps) {
+export function SearchBox({ data, onPress, show = false }: SearchBoxProps) {
   return (
-    data?.length > 0 && (
+    data?.length > 0 &&
+    show && (
       <Animated.View
         className="bg-gray-300 shadow-md rounded-md dark:bg-white px-3 py-3 mt-1"
         entering={FadeIn}
@@ -23,7 +25,9 @@ export function SearchBox({ data, onPress }: SearchBoxProps) {
           renderItem={({ item }) => (
             <TouchableOpacity
               className="flex-row items-center py-2"
-              onPress={() => onPress(item)}>
+              onPress={() => {
+                onPress(item);
+              }}>
               <Icon name="map-marker" size={20} color="#000" />
 
               <Text className="text-sm font-medium text-gray-700 dark:text-gray-500 ml-2">

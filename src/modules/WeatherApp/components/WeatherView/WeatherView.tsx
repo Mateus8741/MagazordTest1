@@ -1,39 +1,16 @@
 import React from 'react';
-import { Text, View, useColorScheme } from 'react-native';
+import { Image, Text, View, useColorScheme } from 'react-native';
 
+import { Root } from '@dtos';
 import IconFooter from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface Props {
-  data: {
-    weather: string;
-    temperature: number;
-    city: string;
-    country: string;
-  };
+  data: Root;
 }
 
-export function WeatherView({
-  data: { weather, temperature, city, country },
-}: Props) {
+export function WeatherView({ data }: Props) {
   const scheme = useColorScheme();
-
-  function switchWeatherIcon() {
-    switch (weather) {
-      case 'cloud':
-        return 'wb-cloudy';
-      case 'sunny':
-        return 'sunny';
-      case 'cloudy-snowing':
-        return 'wb-cloudy';
-      case 'wb-cloudy':
-        return 'wb-cloudy';
-      case 'wb-cloudy':
-        return 'wb-cloudy';
-      default:
-        return 'wb-cloudy';
-    }
-  }
 
   function colorIcons() {
     if (scheme === 'dark') {
@@ -48,24 +25,23 @@ export function WeatherView({
       <View className="flex-col flex-1 items-center justify-center">
         <View className="flex-row items-end justify-center mb-6">
           <Text className="text-2xl font-bold text-center dark:text-white">
-            {city},
+            {data?.location.name},
           </Text>
 
           <Text className="text-xl ml-2 font-regular text-center dark:text-white">
-            {country}
+            {data?.location.country}
           </Text>
         </View>
 
-        <Icon
-          name={switchWeatherIcon()}
-          size={150}
-          color="white"
-          style={{ marginRight: 10 }}
+        <Image
+          source={{ uri: 'https:' + data?.current.condition.icon }}
+          className="w-36 h-36"
+          resizeMode="contain"
         />
 
         <View className="flex-row mt-5">
           <Text className="text-6xl font-bold text-center dark:text-white">
-            {temperature}
+            {data?.current.temp_c}
           </Text>
 
           <Text className="text-6xl ml-2 font-regular text-center dark:text-white">
@@ -83,7 +59,7 @@ export function WeatherView({
             style={{ marginRight: 10 }}
           />
           <Text className="text-base font-bold text-center dark:text-white">
-            22km/h
+            {data?.current.wind_kph} km/h
           </Text>
         </View>
 
@@ -96,19 +72,19 @@ export function WeatherView({
             className="text-white"
           />
           <Text className="text-base font-bold text-center dark:text-white">
-            23%
+            {data?.current.humidity}%{' '}
           </Text>
         </View>
 
         <View className="bg-white/5 rounded-md flex-row p-2 items-center justify-center">
           <Icon
-            name="sunny"
+            name="cloud"
             size={24}
             color={colorIcons()}
             style={{ marginRight: 10 }}
           />
           <Text className="text-base font-bold text-center dark:text-white">
-            06:06 AM
+            {data?.current.cloud}%{' '}
           </Text>
         </View>
       </View>
