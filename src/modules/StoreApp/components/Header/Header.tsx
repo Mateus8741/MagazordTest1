@@ -21,7 +21,7 @@ export function Header({ title, goBack }: HeaderProps) {
 
   return (
     <View
-      className="pb-4 bg-white dark:bg-gray-900"
+      className="pb-4 bg-gray-300 dark:bg-gray-900"
       style={{ paddingTop: top }}>
       <StatusBar
         barStyle="light-content"
@@ -32,7 +32,7 @@ export function Header({ title, goBack }: HeaderProps) {
       <View className="flex-row justify-between items-center px-5">
         {goBack ? (
           <Pressable hitSlop={10} onPress={handleGoBack}>
-            <MaterialIcons name="chevron-left" size={28} color="#FFF" />
+            <MaterialIcons name="chevron-left" size={28} color="green" />
           </Pressable>
         ) : (
           <View className="bg-transparent h-7 w-7" />
