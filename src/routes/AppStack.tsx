@@ -27,7 +27,14 @@ export function AppStack() {
         fullScreenGestureEnabled: true,
       }}>
       <Screen name="AppTabNavigator" component={AppTabNavigator} />
-      <Screen name="DetailsScreen" component={DetailsScreen} />
+      <Screen name="DetailsScreen" component={DetailsScreen}
+        options={{
+          presentation: 'transparentModal',
+          headerShown: false,
+          gestureEnabled: true,
+          animation: 'fade',
+        }}
+      />
     </Navigator>
   );
 }

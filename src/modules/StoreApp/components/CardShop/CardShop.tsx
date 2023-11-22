@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Image,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
@@ -8,7 +7,8 @@ import {
 } from 'react-native';
 
 import { StoreDTO } from '@dtos';
-import { formatMoney } from '@shared';
+import { customTransition, formatMoney } from '@shared';
+import Animated from 'react-native-reanimated';
 
 interface CardShopProps extends TouchableOpacityProps {
   data: StoreDTO;
@@ -21,11 +21,14 @@ export function CardShop({ data, ...rest }: CardShopProps) {
     <TouchableOpacity
       className="h-[170px] w-[170px] bg-gray-900 dark:bg-white rounded-lg overflow-hidden mb-6"
       {...rest}>
-      <Image
+      <Animated.Image
         source={{ uri: data.image }}
-        className="flex-1"
+        className="h-24 w-full self-center "
         resizeMode="cover"
+        sharedTransitionTag={`image-${data.image}`}
+        sharedTransitionStyle={customTransition}
       />
+
       <View className="px-3 py-1 justify-center bg-transparent">
         <Text
           className="text-lg font-bold text-white dark:text-gray-900 text-ellipsis"
