@@ -2,5 +2,6 @@
 export * from './weather/apiConfig';
 export * from './weather/weatherApi';
 
-export * from './store/apiConfig';
+export * from './store/apiConfigStore';
+export * from './store/useStoreApi';
 

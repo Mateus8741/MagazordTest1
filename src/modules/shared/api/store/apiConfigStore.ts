@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const apiConfig = axios.create({
+export const apiConfigStore = axios.create({
   baseURL: 'https://fakestoreapi.com',
 });
