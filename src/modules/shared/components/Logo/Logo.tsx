@@ -16,17 +16,17 @@ const $logo = tv({
   variants: {
     type: {
       todo: {
-        app: 'dark:text-blue-700',
+        app: 'text-black dark:text-blue-700',
         name: 'text-blue-700 dark:text-white',
       },
 
       weather: {
-        app: 'dark:text-orange-600',
+        app: 'text-black dark:text-orange-600',
         name: 'text-orange-600 dark:text-white',
       },
 
       store: {
-        app: 'dark:text-green-600',
+        app: 'text-black dark:text-green-600',
         name: 'text-green-600 dark:text-white',
       },
     },
