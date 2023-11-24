@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Alert, Text, View } from 'react-native';
 
 import { Root2 } from '@dtos';
+import NetInfo from '@react-native-community/netinfo';
 import {
   Logo,
   Screen,
@@ -25,6 +26,26 @@ export function WeatherHomeScreen() {
     isFetching,
     isError,
   } = useWeatherData(selectedCity.name, selectedCity.region);
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      if (!state.isConnected) {
+        Alert.alert(
+          'Erro',
+          'Você está sem conexão com a internet ☹️, por favor verifique sua conexão e tente novamente',
+          [
+            {
+              text: 'OK',
+            },
+          ],
+        );
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   if (isError && selectedCity.name !== undefined) {
     return Alert.alert(
