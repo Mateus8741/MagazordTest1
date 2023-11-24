@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { Root2 } from '@dtos';
 import {
@@ -20,26 +20,10 @@ export function WeatherHomeScreen() {
 
   const { data } = useLocationSearch(city);
 
-  const {
-    data: weather,
-    isFetching,
-    isError,
-  } = useWeatherData(selectedCity.name, selectedCity.region);
-
-  if (isError && selectedCity.name !== undefined) {
-    return Alert.alert(
-      'Erro',
-      'Não foi possível buscar os dados da cidade selecionada',
-      [
-        {
-          text: 'OK',
-          onPress: () => {
-            setSelectedCity({} as Root2);
-          },
-        },
-      ],
-    );
-  }
+  const { data: weather, isFetching } = useWeatherData(
+    selectedCity.name,
+    selectedCity.region,
+  );
 
   return (
     <Screen scrollable>
