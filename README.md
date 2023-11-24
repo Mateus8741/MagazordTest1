@@ -25,6 +25,12 @@
 2. ✅ WeatherApp
 3. ✅ StoreApp
 
+## 🎁 Bônus (opcional)
+1. ✅ Implemente armazenamento local para salvar as tarefas concluídas e a preferência de tema do usuário.
+2. ✅ Crie animações fluidas ao alternar entre as telas do aplicativo.
+3. ✅ Integre o aplicativo com uma API de terceiros de sua escolha, como compartilhamento em redes sociais ou geração de QR code.
+4. ✅ Personalização de Tema (dark & light)
+
 ## 🚀 Install
 
 ```sh
