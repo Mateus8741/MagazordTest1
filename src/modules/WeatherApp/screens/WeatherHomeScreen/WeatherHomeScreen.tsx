@@ -7,6 +7,7 @@ import {
   Screen,
   TextInput,
   useLocationSearch,
+  useToastService,
   useWeatherData,
 } from '@shared';
 import { Loading, SearchBox, WeatherView } from '@weatherComp';
@@ -15,6 +16,8 @@ export function WeatherHomeScreen() {
   const variantType = 'weather';
 
   const { data, setCity } = useLocationSearch();
+
+  const { showToast } = useToastService();
 
   const {
     data: weather,
@@ -29,22 +32,17 @@ export function WeatherHomeScreen() {
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
       if (!state.isConnected) {
-        Alert.alert(
-          'Erro',
-          'Você está sem conexão com a internet ☹️, por favor verifique sua conexão e tente novamente',
-          [
-            {
-              text: 'OK',
-            },
-          ],
-        );
+        showToast({
+          message:
+            'Você está sem conexão com a internet ☹️, por favor verifique sua conexão e tente novamente.',
+        });
       }
     });
 
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [showToast]);
 
   if (isError && selectedCity.name !== undefined) {
     return Alert.alert(
