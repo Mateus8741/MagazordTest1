@@ -1,13 +1,16 @@
+import { API_KEY, BASE_URL_CURRENT, BASE_URL_SEARCH } from '@env';
 import axios from 'axios';
 
+const URL_SEARCH = `${BASE_URL_SEARCH}key=${API_KEY}&q=`;
+
+const URL_CURRENT = `${BASE_URL_CURRENT}key=${API_KEY}&q=`;
+
 const apiConfig = axios.create({
-  baseURL:
-    'https://api.weatherapi.com/v1/search.json?key=f08e87ef7605415fbf9233029232111&q=',
+  baseURL: URL_SEARCH,
 });
 
 const apiConfigCity = axios.create({
-  baseURL:
-    'https://api.weatherapi.com/v1/current.json?key=f08e87ef7605415fbf9233029232111&q=',
+  baseURL: URL_CURRENT,
 });
 
 export function getCity(city: string) {
@@ -15,7 +18,5 @@ export function getCity(city: string) {
 }
 
 export function getWeatherData(city: string, region: string) {
-  return apiConfigCity.get(
-    `https://api.weatherapi.com/v1/current.json?key=f08e87ef7605415fbf9233029232111&q=${city} ${region}`,
-  );
+  return apiConfigCity.get(city + ' ' + region);
 }
