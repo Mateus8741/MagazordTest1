@@ -20,6 +20,7 @@ export function useLocationSearch() {
 
 export function useWeatherData() {
   const [selectedCity, setSelectedCity] = useState<Root2>({} as Root2);
+  const [show, setShow] = useState<boolean>(false);
 
   const { data, isLoading, isFetching, isError } = useQuery({
     queryKey: ['weather', selectedCity?.name, selectedCity?.region],
@@ -32,6 +33,8 @@ export function useWeatherData() {
     data,
     setSelectedCity,
     selectedCity,
+    show,
+    setShow,
     isLoading,
     isFetching,
     isError,

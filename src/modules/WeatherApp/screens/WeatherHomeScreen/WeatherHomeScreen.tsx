@@ -12,8 +12,6 @@ import {
 import { Loading, SearchBox, WeatherView } from '@weatherComp';
 
 export function WeatherHomeScreen() {
-  const [show, setShow] = React.useState<boolean>(false);
-
   const variantType = 'weather';
 
   const { data, setCity } = useLocationSearch();
@@ -22,6 +20,8 @@ export function WeatherHomeScreen() {
     data: weather,
     setSelectedCity,
     selectedCity,
+    show,
+    setShow,
     isFetching,
     isError,
   } = useWeatherData();
