@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import NetInfo from '@react-native-community/netinfo';
 import {
@@ -15,9 +15,9 @@ import { Loading, SearchBox, WeatherView } from '@weatherComp';
 export function WeatherHomeScreen() {
   const variantType = 'weather';
 
-  const { data, setCity } = useLocationSearch();
-
   const { showToast } = useToastService();
+
+  const { data, setCity } = useLocationSearch();
 
   const {
     data: weather,
@@ -45,15 +45,9 @@ export function WeatherHomeScreen() {
   }, [showToast]);
 
   if (isError && selectedCity.name !== undefined) {
-    return Alert.alert(
-      'Erro',
-      'Não foi possível buscar os dados da cidade selecionada',
-      [
-        {
-          text: 'OK',
-        },
-      ],
-    );
+    showToast({
+      message: `Não foi possível encontrar a cidade ${selectedCity.name}`,
+    });
   }
 
   return (

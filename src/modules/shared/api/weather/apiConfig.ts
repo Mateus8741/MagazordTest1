@@ -5,18 +5,10 @@ const URL_SEARCH = `${BASE_URL_SEARCH}key=${API_KEY}&q=`;
 
 const URL_CURRENT = `${BASE_URL_CURRENT}key=${API_KEY}&q=`;
 
-const apiConfig = axios.create({
+export const apiConfigSearch = axios.create({
   baseURL: URL_SEARCH,
 });
 
-const apiConfigCity = axios.create({
+export const apiConfigCurrent = axios.create({
   baseURL: URL_CURRENT,
 });
-
-export function getCity(city: string) {
-  return apiConfig.get(city);
-}
-
-export function getWeatherData(city: string, region: string) {
-  return apiConfigCity.get(city + ' ' + region);
-}

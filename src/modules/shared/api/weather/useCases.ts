@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Root2 } from '@dtos';
 import { useQuery } from '@tanstack/react-query';
 
-import { getCity, getWeatherData } from './apiConfig';
+import { getCity, getWeatherData } from './weatherServices';
 
 export function useLocationSearch() {
   const [city, setCity] = useState<string>('');
