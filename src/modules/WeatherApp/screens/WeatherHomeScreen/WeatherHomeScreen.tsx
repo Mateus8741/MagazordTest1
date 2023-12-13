@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Alert, Text, View } from 'react-native';
 
-import { Root2 } from '@dtos';
 import NetInfo from '@react-native-community/netinfo';
 import {
   Logo,
@@ -13,19 +12,19 @@ import {
 import { Loading, SearchBox, WeatherView } from '@weatherComp';
 
 export function WeatherHomeScreen() {
-  const [city, setCity] = React.useState<string>('');
-  const [selectedCity, setSelectedCity] = React.useState<Root2>({} as Root2);
   const [show, setShow] = React.useState<boolean>(false);
 
   const variantType = 'weather';
 
-  const { data } = useLocationSearch(city);
+  const { data, setCity } = useLocationSearch();
 
   const {
     data: weather,
+    setSelectedCity,
+    selectedCity,
     isFetching,
     isError,
-  } = useWeatherData(selectedCity.name, selectedCity.region);
+  } = useWeatherData();
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
