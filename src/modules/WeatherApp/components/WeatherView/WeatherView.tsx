@@ -25,23 +25,23 @@ export function WeatherView({ data }: Props) {
       <View className="flex-col flex-1 items-center justify-center">
         <View className="flex-row items-end justify-center mb-6">
           <Text className="text-2xl font-bold text-center dark:text-white">
-            {data?.location.name},
+            {data?.location?.name},
           </Text>
 
           <Text className="text-xl ml-2 font-regular text-center dark:text-white">
-            {data?.location.country}
+            {data?.location?.country}
           </Text>
         </View>
 
         <Image
-          source={{ uri: 'https:' + data?.current.condition.icon }}
+          source={{ uri: 'https:' + data?.current?.condition?.icon }}
           className="w-36 h-36"
           resizeMode="contain"
         />
 
         <View className="flex-row mt-5">
           <Text className="text-6xl font-bold text-center dark:text-white">
-            {data?.current.temp_c}
+            {data?.current?.temp_c}
           </Text>
 
           <Text className="text-6xl ml-2 font-regular text-center dark:text-white">
@@ -59,7 +59,7 @@ export function WeatherView({ data }: Props) {
             style={{ marginRight: 10 }}
           />
           <Text className="text-base font-bold text-center dark:text-white">
-            {data?.current.wind_kph} km/h
+            {data?.current?.wind_kph} km/h
           </Text>
         </View>
 
@@ -72,7 +72,7 @@ export function WeatherView({ data }: Props) {
             className="text-white"
           />
           <Text className="text-base font-bold text-center dark:text-white">
-            {data?.current.humidity}%{' '}
+            {data?.current?.humidity}%{' '}
           </Text>
         </View>
 
@@ -84,7 +84,7 @@ export function WeatherView({ data }: Props) {
             style={{ marginRight: 10 }}
           />
           <Text className="text-base font-bold text-center dark:text-white">
-            {data?.current.cloud}%{' '}
+            {data?.current?.cloud}%{' '}
           </Text>
         </View>
       </View>

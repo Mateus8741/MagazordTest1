@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
+import Geolocation from '@react-native-community/geolocation';
 import NetInfo from '@react-native-community/netinfo';
 import {
   Logo,
   Screen,
   TextInput,
+  useGetLatLong,
   useLocationSearch,
   useToastService,
   useWeatherData,
@@ -16,6 +18,8 @@ export function WeatherHomeScreen() {
   const variantType = 'weather';
 
   const { showToast } = useToastService();
+
+  const { dataGeo } = useGetLatLong();
 
   const { data, setCity } = useLocationSearch();
 
@@ -28,6 +32,11 @@ export function WeatherHomeScreen() {
     isFetching,
     isError,
   } = useWeatherData();
+
+  Geolocation.setRNConfiguration({
+    skipPermissionRequests: false,
+    authorizationLevel: 'whenInUse',
+  });
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
@@ -69,6 +78,7 @@ export function WeatherHomeScreen() {
           data={data?.data}
           onPress={item => {
             setSelectedCity(item);
+            console.log(item);
             setShow(false);
           }}
           show={show}
@@ -77,9 +87,7 @@ export function WeatherHomeScreen() {
 
       <View className="flex-1 px-5 justify-center items-center">
         {weather?.data === undefined ? (
-          <View className="flex-1 justify-center items-center">
-            <Text className="text-2xl text-gray-500">Faça uma busca...</Text>
-          </View>
+          <WeatherView data={dataGeo} />
         ) : isFetching ? (
           <Loading />
         ) : (

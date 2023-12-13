@@ -7,3 +7,7 @@ export function getCity(city: string) {
 export function getWeatherData(city: string, region: string) {
   return apiConfigCurrent.get(city + ' ' + region);
 }
+
+export function getGeoWeatherData(lat: number | null, long: number | null) {
+  return apiConfigCurrent.get(`lat=${lat}&lon=${long}`);
+}
