@@ -1,9 +1,9 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { StoreDTO } from '@dtos';
 import { Logo, Screen, UseStoreApi } from '@shared';
-import { CardShop, FAB } from '@storeComp';
+import { CardShop, EmptyList, FAB } from '@storeComp';
 
 import { AppTabScreenProps } from '@routes';
 
@@ -22,16 +22,6 @@ export function StoreHomeScreen({
     return <CardShop data={item} onPress={() => goToDetails(item)} />;
   }
 
-  function renderEmpty() {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <Text className="text-lg font-bold text-gray-900 dark:text-white">
-          Nem um produto encontrado
-        </Text>
-      </View>
-    );
-  }
-
   return (
     <Screen>
       <View className="flex-1 px-5">
@@ -41,7 +31,7 @@ export function StoreHomeScreen({
           data={data?.data}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => renderItem(item)}
-          ListEmptyComponent={renderEmpty}
+          ListEmptyComponent={EmptyList}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           columnWrapperStyle={{
