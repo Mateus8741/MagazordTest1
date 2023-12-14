@@ -2,17 +2,20 @@ import React from 'react';
 import { Pressable, StatusBar, Text, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+import { useCart } from '@shared';
 import Icon from 'react-native-vector-icons/Octicons';
 
 export function CartHeader() {
   const { goBack: Back } = useNavigation();
+
+  const { clearCart } = useCart();
 
   function handleGoBack() {
     Back();
   }
 
   function handleClearCart() {
-    console.log('clear cart');
+    clearCart();
   }
 
   return (

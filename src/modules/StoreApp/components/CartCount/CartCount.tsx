@@ -1,28 +1,52 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import { useCart } from '@services';
+import { StoreDTO } from '@dtos';
+import { useCart, useToastService } from '@services';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export function CartCount() {
-  const { quantity, addProduct, removeProduct, clearCart } = useCart();
+interface CartCountProps {
+  product: StoreDTO;
+}
 
-  // trash-can-outline
+export function CartCount({ product }: CartCountProps) {
+  const { showToast } = useToastService();
+
+  const { items, addProduct, reduceProduct, clearCart } = useCart();
+
+  function handleClearCart() {
+    clearCart();
+    showToast({
+      message: 'Carrinho limpo com sucesso!',
+    });
+  }
+
+  function quantityHandler() {
+    if (items === 1) {
+      return (
+        <Pressable hitSlop={10} onPress={handleClearCart}>
+          <Icon name="trash-can-outline" size={20} color="green" />
+        </Pressable>
+      );
+    } else {
+      return (
+        <Pressable hitSlop={10} onPress={() => reduceProduct(product)}>
+          <Icon name="minus" size={20} color="green" />
+        </Pressable>
+      );
+    }
+  }
 
   return (
     <View className="flex-row w-24 justify-between items-center bg-white rounded-md shadow-md p-2">
-      <Pressable hitSlop={10} onPress={() => {}}>
-        <Icon name="minus" size={20} color="green" />
-      </Pressable>
+      {quantityHandler()}
 
       <Text className="text-green-600">0</Text>
       <Icon
         name="plus"
         size={20}
         color="green"
-        onPress={() => {
-          console.log('add');
-        }}
+        onPress={() => addProduct(product)}
       />
     </View>
   );
