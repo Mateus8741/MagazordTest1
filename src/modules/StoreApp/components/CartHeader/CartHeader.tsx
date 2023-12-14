@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, StatusBar, Text, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/Octicons';
 
 export function CartHeader() {
   const { goBack: Back } = useNavigation();
@@ -27,7 +27,7 @@ export function CartHeader() {
           hitSlop={10}
           onPress={handleGoBack}
           className="flex-row items-center">
-          <MaterialIcons name="chevron-left" size={30} color="green" />
+          <Icon name="chevron-down" size={30} color="green" />
         </Pressable>
 
         <Pressable hitSlop={10} onPress={handleClearCart}>
