@@ -3,7 +3,7 @@ import { FlatList, Text, View } from 'react-native';
 
 import { StoreDTO } from '@dtos';
 import { Logo, Screen, UseStoreApi } from '@shared';
-import { CardShop } from '@storeComp';
+import { CardShop, FAB } from '@storeComp';
 
 import { AppTabScreenProps } from '@routes';
 
@@ -49,6 +49,8 @@ export function StoreHomeScreen({
           }}
         />
       </View>
+
+      <FAB />
     </Screen>
   );
 }
