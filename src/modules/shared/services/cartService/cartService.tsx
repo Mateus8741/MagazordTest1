@@ -2,36 +2,60 @@ import { StoreDTO } from '@dtos';
 import { create } from 'zustand';
 
 interface CartStore {
-  products: StoreDTO[];
-  quantity: number;
+  products: Array<StoreDTO & { quantity: number }>;
   addProduct: (product: StoreDTO) => void;
-  removeProduct: (product: StoreDTO) => void;
+  reduceProduct: (product: StoreDTO) => void;
   clearCart: () => void;
+  items: number;
 }
 
 const useCartStore = create<CartStore>(set => ({
   products: [],
-  quantity: 0,
+  items: 0,
   addProduct: product =>
-    set(state => ({
-      products: [...state.products, product],
-      quantity: state.quantity + 1,
-    })),
-  removeProduct: product =>
-    set(state => ({
-      products: state.products.filter(item => item.id !== product.id),
-      quantity: state.quantity - 1,
-    })),
+    set(state => {
+      state.items++;
+      const productExists = state.products.find(item => item.id === product.id);
+
+      if (productExists) {
+        return {
+          products: state.products.map(item => {
+            if (item.id === product.id) {
+              return { ...item, quantity: item.quantity + 1 };
+            }
+            return item;
+          }),
+        };
+      } else {
+        return { products: [...state.products, { ...product, quantity: 1 }] };
+      }
+    }),
+  reduceProduct: product =>
+    set(state => {
+      return {
+        products: state.products
+          .map(item => {
+            if (item.id === product.id) {
+              state.items--;
+              return { ...item, quantity: item.quantity - 1 };
+            }
+            return item;
+          })
+          .filter(item => item.quantity > 0),
+      };
+    }),
   clearCart: () =>
-    set(() => ({
-      products: [],
-      quantity: 0,
-    })),
+    set(() => {
+      return {
+        items: 0,
+        products: [],
+      };
+    }),
 }));
 
 export function useCart() {
-  const { products, quantity, addProduct, removeProduct, clearCart } =
+  const { products, items, addProduct, reduceProduct, clearCart } =
     useCartStore();
 
-  return { products, quantity, addProduct, removeProduct, clearCart };
+  return { products, items, addProduct, reduceProduct, clearCart };
 }
