@@ -9,7 +9,7 @@ export function CartHeader() {
   const { goBack: Back } = useNavigation();
   const { showToast } = useToastService();
 
-  const { clearCart } = useCart();
+  const { clearCart, items } = useCart();
 
   function handleGoBack() {
     Back();
@@ -38,9 +38,11 @@ export function CartHeader() {
           <Icon name="chevron-down" size={30} color="green" />
         </Pressable>
 
-        <Pressable hitSlop={10} onPress={handleClearCart}>
-          <Text className="text-red-500 font-bold text-center">Limpar</Text>
-        </Pressable>
+        {items >= 1 && (
+          <Pressable hitSlop={10} onPress={handleClearCart}>
+            <Text className="text-red-500 font-bold text-center">Limpar</Text>
+          </Pressable>
+        )}
       </View>
     </View>
   );
