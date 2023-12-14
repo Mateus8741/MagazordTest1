@@ -11,7 +11,10 @@ interface CartCardProps {
 }
 
 export function CartCard({ product }: CartCardProps) {
-  const formatedMoney = formatMoney(product.price);
+  const total =
+    product.quantity > 1 ? product.price * product.quantity : product.price;
+
+  const formatedMoney = formatMoney(total);
 
   return (
     <View className="flex flex-row items-center rounded-md shadow-md bg-white">

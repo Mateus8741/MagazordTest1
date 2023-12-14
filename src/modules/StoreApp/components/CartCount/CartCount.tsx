@@ -14,7 +14,7 @@ export function CartCount({ product }: CartCountProps) {
   const { goBack } = useNavigation();
   const { showToast } = useToastService();
 
-  const { items, addProduct, reduceProduct, clearCart } = useCart();
+  const { products, addProduct, reduceProduct, clearCart } = useCart();
 
   function handleClearCart() {
     clearCart();
@@ -24,10 +24,20 @@ export function CartCount({ product }: CartCountProps) {
     });
   }
 
+  function watchQuantity() {
+    const productQuantity = products.find(item => item.id === product.id);
+
+    if ((productQuantity?.quantity ?? 0) >= 1 && products.length > 1) {
+      return reduceProduct(product);
+    } else {
+      return handleClearCart();
+    }
+  }
+
   function quantityHandler() {
-    if (items === 1) {
+    if (product.quantity === 1) {
       return (
-        <Pressable hitSlop={10} onPress={handleClearCart}>
+        <Pressable hitSlop={10} onPress={() => watchQuantity()}>
           <Icon name="trash-can-outline" size={20} color="green" />
         </Pressable>
       );
