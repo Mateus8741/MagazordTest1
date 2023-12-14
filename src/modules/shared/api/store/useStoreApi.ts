@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { apiConfigStore } from './apiConfigStore';
+import { getProducts } from './storeServices';
 
 export function UseStoreApi(path: string) {
   const { data, isError, isFetching } = useQuery({
     queryKey: ['store', path],
-    queryFn: () => apiConfigStore.get(path),
+    queryFn: () => getProducts(path),
   });
 
   return { data, isError, isFetching };
