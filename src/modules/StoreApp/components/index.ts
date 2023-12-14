@@ -4,6 +4,7 @@ export * from './CartCard/CartCard';
 export * from './CartCount/CartCount';
 export * from './CartHeader/CartHeader';
 export * from './CustomButton/CustomButton';
+export * from './EmptyCartList/EmptyCartList';
 export * from './EmptyList/EmptyList';
 export * from './FAB/FAB';
 export * from './Header/Header';

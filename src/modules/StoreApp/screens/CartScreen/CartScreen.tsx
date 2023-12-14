@@ -1,8 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { Screen, useCart } from '@shared';
-import { CartCard, CartHeader } from '@storeComp';
+import { CartCard, CartHeader, EmptyCartList } from '@storeComp';
 
 export function CartScreen() {
   const { products } = useCart();
@@ -11,9 +11,13 @@ export function CartScreen() {
     <Screen>
       <CartHeader />
       <View className="flex-1 p-5">
-        {products.map(product => (
-          <CartCard key={product.id} product={product} />
-        ))}
+        <FlatList
+          data={products}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({ item }) => <CartCard product={item} />}
+          ListEmptyComponent={EmptyCartList}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </Screen>
   );
