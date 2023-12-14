@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { StoreDTO } from '@dtos';
+import { useNavigation } from '@react-navigation/native';
 import { useCart, useToastService } from '@services';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -10,12 +11,14 @@ interface CartCountProps {
 }
 
 export function CartCount({ product }: CartCountProps) {
+  const { goBack } = useNavigation();
   const { showToast } = useToastService();
 
   const { items, addProduct, reduceProduct, clearCart } = useCart();
 
   function handleClearCart() {
     clearCart();
+    goBack();
     showToast({
       message: 'Carrinho limpo com sucesso!',
     });

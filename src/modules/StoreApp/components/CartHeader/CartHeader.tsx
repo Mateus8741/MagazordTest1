@@ -2,11 +2,12 @@ import React from 'react';
 import { Pressable, StatusBar, Text, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { useCart } from '@shared';
+import { useCart, useToastService } from '@shared';
 import Icon from 'react-native-vector-icons/Octicons';
 
 export function CartHeader() {
   const { goBack: Back } = useNavigation();
+  const { showToast } = useToastService();
 
   const { clearCart } = useCart();
 
@@ -16,6 +17,10 @@ export function CartHeader() {
 
   function handleClearCart() {
     clearCart();
+    handleGoBack();
+    showToast({
+      message: 'Carrinho limpo com sucesso!',
+    });
   }
 
   return (
