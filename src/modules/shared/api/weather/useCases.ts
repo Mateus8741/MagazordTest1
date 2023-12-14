@@ -48,29 +48,7 @@ export function useGetLatLong() {
 
   const [dataGeo, setDataGeo] = useState<Root>({} as Root);
 
-  // Geolocation.getCurrentPosition(
-  //   position => {
-  //     setLatitude(position.coords.latitude);
-  //     setLongitude(position.coords.longitude);
-  //   },
-  //   error => {
-  //     console.log(error);
-  //   },
-  //   { enableHighAccuracy: true, timeout: 500, maximumAge: 10 },
-  // );
-
   useEffect(() => {
-    // Geolocation.getCurrentPosition(
-    //   position => {
-    //     setLatitude(position.coords.latitude);
-    //     setLongitude(position.coords.longitude);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   },
-    //   { enableHighAccuracy: true, timeout: 5000, maximumAge: 10000 },
-    // );
-
     const watchId = Geolocation.watchPosition(
       position => {
         setLatitude(position.coords.latitude);
@@ -90,18 +68,6 @@ export function useGetLatLong() {
 
     return () => Geolocation.clearWatch(watchId);
   }, [latitude, longitude]);
-
-  // const { data } = useQuery({
-  //   queryKey: ['weathergeo', latitude, longitude],
-  //   queryFn: () => getGeoWeatherData(latitude, longitude),
-  //   retry: false,
-  //   staleTime: 20000,
-  //   refetchInterval: 10000,
-  //   enabled: !!latitude && !!longitude,
-  // });
-
-  console.log('larlong', latitude, longitude);
-  console.log('dataGeo', dataGeo);
 
   return { dataGeo };
 }
