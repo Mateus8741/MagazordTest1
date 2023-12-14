@@ -4,7 +4,7 @@ import React from 'react';
 import { StoreDTO } from '@dtos';
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { DetailsScreen } from '@store';
+import { CartScreen, DetailsScreen } from '@store';
 
 import {
   AppTabBottomTabParamList,
@@ -14,6 +14,7 @@ import {
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
   DetailsScreen: {data: StoreDTO};
+  CartScreen: undefined;
 };
 
 export function AppStack() {
@@ -33,6 +34,14 @@ export function AppStack() {
           headerShown: false,
           gestureEnabled: true,
           animation: 'fade',
+        }}
+      />
+      <Screen name="CartScreen" component={CartScreen}
+        options={{
+          presentation: 'modal',
+          headerShown: false,
+          gestureEnabled: true,
+          animation: 'slide_from_bottom',
         }}
       />
     </Navigator>
