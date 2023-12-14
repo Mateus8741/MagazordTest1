@@ -18,6 +18,10 @@ export function StoreHomeScreen({
     navigation.navigate('DetailsScreen', { data: product });
   }
 
+  function goToCart() {
+    navigation.navigate('CartScreen');
+  }
+
   function renderItem(item: StoreDTO) {
     return <CardShop data={item} onPress={() => goToDetails(item)} />;
   }
@@ -40,7 +44,7 @@ export function StoreHomeScreen({
         />
       </View>
 
-      <FAB />
+      <FAB onPress={goToCart} />
     </Screen>
   );
 }
