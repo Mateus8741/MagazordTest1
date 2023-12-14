@@ -44,7 +44,7 @@ export function CartCount({ product }: CartCountProps) {
     <View className="flex-row w-24 justify-between items-center bg-white rounded-md shadow-md p-2">
       {quantityHandler()}
 
-      <Text className="text-green-600">{items}</Text>
+      <Text className="text-green-600">{product.quantity}</Text>
       <Icon
         name="plus"
         size={20}

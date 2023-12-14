@@ -1,7 +1,13 @@
 import React from 'react';
-import { Alert, Share, Text, View } from 'react-native';
+import { Share, Text, View } from 'react-native';
 
-import { Screen, customTransition, formatMoney, useAppSafeArea } from '@shared';
+import {
+  Screen,
+  customTransition,
+  formatMoney,
+  useAppSafeArea,
+  useCart,
+} from '@shared';
 import { CustomButton, Header } from '@storeComp';
 import Animated, { SlideInDown } from 'react-native-reanimated';
 
@@ -13,22 +19,20 @@ export function DetailsScreen({
 }: AppScreenProps<'DetailsScreen'>) {
   const { data } = route.params;
 
+  const { addProduct } = useCart();
+
   const { top } = useAppSafeArea();
 
   const formatedMoney = formatMoney(data.price);
 
   function handleBuy() {
-    Alert.alert('Comprar', 'Deseja confirmar a compra desse produto?', [
-      {
-        text: 'Confirmar',
-        onPress: () => navigation.goBack(),
-      },
-      {
-        text: 'Cancel',
-        style: 'destructive',
-        onPress: () => console.log('Cancel Pressed'),
-      },
-    ]);
+    addProduct(data);
+
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    }
+
+    navigation.navigate('CartScreen');
   }
 
   function handleShare() {
