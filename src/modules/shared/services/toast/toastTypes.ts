@@ -1,10 +1,7 @@
 export interface Toast {
   message: string;
   duration?: number;
-  action?: {
-    title: string;
-    onPress: () => void;
-  };
+  type?: 'success' | 'error' | 'warning' | 'info';
 }
 
 export interface ToastService {

@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, ListRenderItem, View } from 'react-native';
 
 import { StoreDTO } from '@dtos';
-import { Screen, useCart } from '@shared';
+import { Screen, useCart, useToastService } from '@shared';
 import {
   CartCard,
   CartFooter,
@@ -11,15 +11,25 @@ import {
   ResumeValue,
 } from '@storeComp';
 
-export function CartScreen() {
-  const { products } = useCart();
+import { AppScreenProps } from '@routes';
+
+export function CartScreen({ navigation }: AppScreenProps<'CartScreen'>) {
+  const { products, items, clearCart } = useCart();
+
+  const { showToast } = useToastService();
 
   const renderItem: ListRenderItem<StoreDTO> = ({ item }) => (
     <CartCard product={item} />
   );
 
   function handleFinish() {
-    console.log('finish');
+    navigation.goBack();
+    clearCart();
+    showToast({
+      type: 'success',
+      message:
+        'Sua compra foi finalizada com sucesso! 😁 Obrigado pela preferência!',
+    });
   }
 
   return (
@@ -34,9 +44,14 @@ export function CartScreen() {
           showsVerticalScrollIndicator={false}
         />
       </View>
-      <ResumeValue />
 
-      <CartFooter onPress={handleFinish} />
+      {items > 0 && (
+        <>
+          <ResumeValue />
+
+          <CartFooter onPress={handleFinish} />
+        </>
+      )}
     </Screen>
   );
 }

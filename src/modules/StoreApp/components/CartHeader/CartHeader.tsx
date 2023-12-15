@@ -19,6 +19,7 @@ export function CartHeader() {
     clearCart();
     handleGoBack();
     showToast({
+      type: 'warning',
       message: 'Carrinho limpo com sucesso!',
     });
   }
