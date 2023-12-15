@@ -39,7 +39,7 @@ export function ResumeValue() {
         <Text className="text-gray-400 dark:text-white font-regular text-base">
           Frete
         </Text>
-        <Text className="text-green-500 dark:text-white text-base">Grátis</Text>
+        <Text className="text-green-500 text-base">Grátis</Text>
       </View>
 
       <View className="flex flex-row justify-between mt-2">
