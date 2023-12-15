@@ -41,7 +41,9 @@ export function CartHeader() {
 
         {items >= 1 && (
           <Pressable hitSlop={10} onPress={handleClearCart}>
-            <Text className="text-gray-600 font-bold text-center">Limpar</Text>
+            <Text className="text-gray-600 dark:text-gray-300 font-bold text-center">
+              Limpar
+            </Text>
           </Pressable>
         )}
       </View>

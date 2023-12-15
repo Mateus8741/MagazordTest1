@@ -15,7 +15,7 @@ export function CartFooter({ ...rest }: CartFooterProps) {
   const formattedTotal = formatMoney(total + 0.99);
 
   return (
-    <RN.View className="flex-row justify-between items-center bg-white shadow-2xl pb-10 px-5 pt-2">
+    <RN.View className="flex-row justify-between items-center bg-white dark:bg-gray-900 shadow-2xl pb-10 px-5 pt-2">
       <RN.View className="flex-col">
         <RN.View className="flex-row items-center">
           <RN.Text className="text-center text-gray-400 dark:text-white text-xs font-regular">
