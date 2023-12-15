@@ -14,10 +14,6 @@ import {
 export function CartScreen() {
   const { products } = useCart();
 
-  const total = products.reduce((acc, product) => {
-    return acc + product.price * product.quantity;
-  }, 0);
-
   const renderItem: ListRenderItem<StoreDTO> = ({ item }) => (
     <CartCard product={item} />
   );
@@ -36,7 +32,7 @@ export function CartScreen() {
       </View>
       <ResumeValue />
 
-      <CartFooter total={total} />
+      <CartFooter />
     </Screen>
   );
 }
