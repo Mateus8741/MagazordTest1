@@ -18,6 +18,10 @@ export function CartScreen() {
     <CartCard product={item} />
   );
 
+  function handleFinish() {
+    console.log('finish');
+  }
+
   return (
     <Screen>
       <CartHeader />
@@ -32,7 +36,7 @@ export function CartScreen() {
       </View>
       <ResumeValue />
 
-      <CartFooter />
+      <CartFooter onPress={handleFinish} />
     </Screen>
   );
 }

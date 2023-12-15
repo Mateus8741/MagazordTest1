@@ -17,7 +17,7 @@ export function CartCard({ product }: CartCardProps) {
   const formatedMoney = formatMoney(total);
 
   return (
-    <View className="flex-row items-center rounded-md shadow-md mb-4 bg-white">
+    <View className="flex-row items-center rounded-md shadow-sm mb-4 bg-white">
       <View className="h-30 p-2 mr-2 rounded-md">
         <Image
           className="w-28 h-28 rounded-lg"
