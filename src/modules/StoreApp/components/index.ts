@@ -8,4 +8,5 @@ export * from './EmptyCartList/EmptyCartList';
 export * from './EmptyList/EmptyList';
 export * from './FAB/FAB';
 export * from './Header/Header';
+export * from './ResumeValue/ResumeValue';
 

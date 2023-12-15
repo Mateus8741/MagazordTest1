@@ -3,7 +3,7 @@ import { FlatList, ListRenderItem, View } from 'react-native';
 
 import { StoreDTO } from '@dtos';
 import { Screen, useCart } from '@shared';
-import { CartCard, CartHeader, EmptyCartList } from '@storeComp';
+import { CartCard, CartHeader, EmptyCartList, ResumeValue } from '@storeComp';
 
 export function CartScreen() {
   const { products } = useCart();
@@ -24,6 +24,7 @@ export function CartScreen() {
           showsVerticalScrollIndicator={false}
         />
       </View>
+      <ResumeValue />
     </Screen>
   );
 }
