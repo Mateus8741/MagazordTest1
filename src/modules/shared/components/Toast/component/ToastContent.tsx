@@ -12,14 +12,36 @@ interface Props {
 }
 
 export function ToastContent({ toast }: Props) {
+  const type = toast?.type;
+
+  const mapNameAndColor = {
+    success: {
+      name: 'check-circle',
+      color: 'green',
+    },
+    error: {
+      name: 'error',
+      color: 'red',
+    },
+    info: {
+      name: 'info-outline',
+      color: 'blue',
+    },
+    warning: {
+      name: 'warning',
+      color: 'orange',
+    },
+  };
+
   return (
     <View {...$boxStyles} style={[{ top: 110 }, useShadowProps()]}>
       <Icon
-        name="error-outline"
-        color="orange"
+        name={mapNameAndColor[type!].name}
+        color={mapNameAndColor[type!].color}
         size={24}
         style={{ marginRight: 16 }}
       />
+
       <Text className="font-regular text-md" style={{ flexShrink: 1 }}>
         {toast?.message}
       </Text>
