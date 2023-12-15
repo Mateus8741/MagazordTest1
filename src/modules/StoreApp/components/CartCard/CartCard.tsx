@@ -35,7 +35,7 @@ export function CartCard({ product }: CartCardProps) {
         </View>
 
         <View className="flex-row items-center justify-between">
-          <Text className="text-green-600 font-bold">{formatedMoney}</Text>
+          <Text className="text-gray-600 font-regular">{formatedMoney}</Text>
           <CartCount product={product} />
         </View>
       </View>
