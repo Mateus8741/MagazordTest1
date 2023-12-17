@@ -31,6 +31,12 @@
 3. ✅ Integre o aplicativo com uma API de terceiros de sua escolha, como compartilhamento em redes sociais ou geração de QR code.
 4. ✅ Personalização de Tema (dark & light)
 
+## ⏫ Improvements
+1. ✅ Variáveis de ambiente isoladas(lembrando que as enviei de forma aberta por se tratar de um teste onde as credenciais irão se perder depois de um tempo)
+2. ✅ Abstração melhorada de regras de negócio
+3. ✅ Melhoria da experiência de usuário na "Store"
+4. ✅ Adicionado o Geolocation e Geocoding(porém não tão eficiente por se tratar de algo de graça ao inves do google, por falta de recursos)
+
 ## 🚀 Install
 
 ```sh
