@@ -36,6 +36,8 @@
 2. ✅ Abstração melhorada de regras de negócio
 3. ✅ Melhoria da experiência de usuário na "Store"
 4. ✅ Adicionado o Geolocation e Geocoding(porém não tão eficiente por se tratar de algo de graça ao inves do google, por falta de recursos)
+5. ✅ Adicionado carrinho e persistencia de carrinho na "Store"
+6. ✅ Adicionado conceito de "GhostCart" (método usado para fazer o cliente ver que tem itens no carrinho)
 
 ## 🚀 Install
 
