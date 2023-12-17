@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, View } from 'react-native';
 
 import { StoreDTO } from '@dtos';
-import { Logo, Screen, UseStoreApi } from '@shared';
+import { Logo, Screen, UseStoreApi, useCart, useToastService } from '@shared';
 import { CardShop, EmptyList, FAB } from '@storeComp';
 
 import { AppTabScreenProps } from '@routes';
@@ -11,6 +11,10 @@ export function StoreHomeScreen({
   navigation,
 }: AppTabScreenProps<'StoreHomeScreen'>) {
   const variantType = 'store';
+
+  const { items } = useCart();
+
+  const { showToast } = useToastService();
 
   const { data } = UseStoreApi('/products');
 
@@ -25,6 +29,15 @@ export function StoreHomeScreen({
   function renderItem(item: StoreDTO) {
     return <CardShop data={item} onPress={() => goToDetails(item)} />;
   }
+
+  useEffect(() => {
+    if (items >= 1) {
+      showToast({
+        type: 'warning',
+        message: 'Você ainda tem itens no carrinho',
+      });
+    }
+  }, [items, showToast]);
 
   return (
     <Screen>
